@@ -1,0 +1,17 @@
+<h2>Home Page</h2>
+
+<!--se usa ng-template para ambos resltados de la condicion, carga lo then si es verdad, else si es false-->
+<div *ngIf="_identified; then identificado else noIdentified"><!--si no se cumple la condicion se llama el template-->
+
+</div>
+
+<ng-template #identificado>
+  <p><strong>Estas identificado</strong></p>
+  <button (click)="idetified()">Salir</button>
+</ng-template>
+
+<!--con # se crean variables dentro de la vista-->
+<ng-template #noIdentified>
+  <p><strong>No estas identificado</strong></p>
+  <button (click)="idetified()">Identificarse</button>
+</ng-template>

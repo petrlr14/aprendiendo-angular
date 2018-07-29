@@ -1,0 +1,35 @@
+<h2>Contact Page</h2>
+
+<form #formContacto="ngForm" (ngSubmit)="submit(formContacto)">
+  <!-- con esto se manda el formulario como argumento para vaciarlo en el component.ts -->
+  <!-- con esto se convierte el formulario en formulario angular -->
+  <label for="nombre">Nombre </label>
+  <br>
+  <input name="nombre" type="text" #nombre="ngModel" [(ngModel)]="user.nombre" required>
+  <!-- con esto se dice que el campo es de un 
+    formulario angular y se usa el data binding para modificar el objeto
+    si no cumple un pattern no es valid y tira el mensaje
+  -->
+  <span *ngIf="nombre.touched&&!nombre.valid" style="color:red">El campo es obligatorio</span>
+  <br>
+  <!-- al parecer touched es como el si tuvo focus por primera vez -->
+  <!-- el nombre en # al parecer debe ser igual al name que se le pone ,sino palma -->
+  <label for="apellido">Apellido </label>
+  <br>
+  <input name="apellido" type="text" #apellido="ngModel" [(ngModel)]="user.apellidos" required>
+  <span *ngIf="apellido.touched&&!apellido.valid" style="color:red">El campo es obligatorio</span>
+  <br>
+
+  <label for="email">email </label>
+  <br>
+  <input name="email" type="email" #email="ngModel" [(ngModel)]="user.email" required>
+  <span *ngIf="email.touched&&!email.valid" style="color:red">El campo es obligatorio</span>
+  <br>
+
+  <label for="message">Message </label>
+  <br>
+  <textarea name="message" #mensaje="ngModel" [(ngModel)]="user.mensaje"></textarea>
+  <br>
+
+  <input value="Guardar" type="submit" [disabled]="!formContacto.form.valid">
+</form>

@@ -1,0 +1,34 @@
+<h2 [style.color]="'red'">{{title}}</h2><!--esto es una directiva-->
+<button (click)="pushZapatilla()">Push shoe</button>
+<p>Añadir marca</p>
+<input type="text" [(ngModel)]="_miMarca"><!--esto hace que cambie el valor de _miMarca de manera reactiva-->
+<!--(blur)=blur wey :v   (keyup.enter)=captura el enter-->
+<p>{{_miMarca}}</p>
+<button (click)="showMarca()">show marca</button>
+<ul>
+  <!--asi se llama los metodos set y get, sin el ()-->
+  <!--asi se hace un for con una directiva-->
+
+  <li *ngFor="let zap of zapatillas">
+    <!--condicion a cumplir para que asigne esa clase(directiva de atributo class)-->
+    <span [style.color]="zap.price<150?'green':'black'"><!--se aplica un if en la directiva de style-->
+    {{zap.name}}-
+        <strong [class.Algo]="zap.price<150"
+          [ngClass]="{
+            'una clase':true,
+            'otra clase':false
+          }"
+        >
+          <!--con la directiva ngClass se declaran muchas clases, con condiciones para que se agregue cada una-->
+        {{zap.price}}
+      </strong>
+      </span>
+  </li><!--esto es hermoso *.* -->
+</ul>
+<h2 [style.color]="'red'">Marcas</h2>
+<ul>
+  <li *ngFor="let mar of marca; let indice=index">
+    {{mar+---+indice}}
+    <button (click)="deleteMarca(indice)">Delete marca</button>
+  </li>
+</ul>

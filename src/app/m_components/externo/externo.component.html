@@ -1,0 +1,32 @@
+<h5>{{fecha|date:'dd/MM/yyyy'|uppercase}}</h5><!--al parecer el or, es un pipe, lo que sigue es el tipo de pipe. Lo que sigue con : son parametros-->
+<!--se pueden usar pipes como librerias con momentjs-->
+<h1>{{4|calculadora:5}}</h1>
+<hr>
+<input type="text" [(ngModel)]="id" placeholder="id" (keyup.enter)="loadUser()">
+<!--solo poner el valor en el if verifica si es undefined-->
+<div *ngIf="person; then truee else falsee"></div>
+<!--QUE RICOOOOOOOO-->
+<ng-template #truee>
+  <!--las pipes se pueden usar en caulquier lugar *.* -->
+  <p >Welcome {{person.first_name|uppercase}} {{person.last_name}}</p>
+  <img src="{{person.avatar}}" width="200px"/>
+</ng-template>
+<ng-template #falsee>
+ <h2>Loading...</h2>
+</ng-template>
+
+<hr>
+<h2>Create User</h2>
+<form #newUserForm="ngForm" (ngSubmit)="onSubmit(newUserForm)">
+  <p>
+    <label for="name">Name: </label>
+    <input name="name" #name="ngModel" type="text" [(ngModel)]="new_user.name" required>
+    <span *ngIf="name.touched&&!name.valid">Name no valido</span>
+  </p>
+  <p>
+    <label for="job">Job: </label>
+    <input name="job" #job="ngModel" type="text" [(ngModel)]="new_user.job" required>
+    <span *ngIf="job.touched&&!job.valid">Job no valido</span>
+  </p>
+  <input type="submit" value="Create User" [disabled]="!newUserForm.form.valid">
+</form>

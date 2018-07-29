@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FirstAngular';
+  public title = 'FirstAngular';
+  private _showVideoJuegos = true;
+  public button='Show';
+
+  public setshowVideoJuegos() {
+    if(this._showVideoJuegos){
+      this.button='Hide';
+    }else{
+      this.button='Show';
+    }
+    this._showVideoJuegos = !this._showVideoJuegos;
+  }
+
+  public getshowVideoJuegos(): boolean {
+    return this._showVideoJuegos;
+  }
 }
